@@ -1,0 +1,203 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-image: url('images/room.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Main Container for Booking Form */
+.booking-container {
+  background-color: #ffffff;
+  padding: 35px 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  max-width: 420px;
+  width: 100%;
+  color: #000;
+  transition: transform 0.3s ease;
+}
+
+/* Heading */
+h1 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 24px;
+  color: #000;
+}
+
+/* Form Labels and Inputs */
+form label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #111;
+  margin-top: 15px;
+}
+
+form input,
+form select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #999;
+  margin-bottom: 12px;
+  background-color: #fff;
+  color: #000;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+form input:focus,
+form select:focus {
+  border: 1px solid #007bff;
+  box-shadow: 0 0 5px rgba(0,123,255,0.3);
+  outline: none;
+}
+
+/* Submit Button */
+form button {
+  width: 100%;
+  background-color: #000;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  margin-top: 10px;
+}
+
+form button:hover {
+  background-color: #333;
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+
+/* Admin Button */
+.admin-button {
+  display: inline-block;
+  margin-top: 12px;
+  width: 100%;
+  text-align: center;
+  background-color: #000;
+  color: #fff;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  font-size: 15px;
+  text-decoration: none;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.admin-button:hover {
+  background-color: #333;
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+
+/* Popup Styling */
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-content {
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  max-width: 350px;
+  width: 90%;
+  animation: popupFade 0.3s ease-in-out;
+}
+
+.popup-content h2 {
+  color: #28a745;
+  margin-bottom: 15px;
+}
+
+.popup-content p {
+  margin-bottom: 20px;
+}
+
+.popup-content button {
+  padding: 10px 20px;
+  background-color: #28a745;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.popup-content button:hover {
+  background-color: #218838;
+}
+
+@keyframes popupFade {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* -------- Admin Table Styling -------- */
+.summary-container {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.summary-container h1 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #000;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px 16px;
+  text-align: left;
+  color: #000;
+}
+
+th {
+  background-color: #000;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f4f4f4;
+}

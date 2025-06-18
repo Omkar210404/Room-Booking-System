@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SISPL Room Booking System</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="booking-container">
+    <h1>Room Booking Form</h1>
+    <form id="bookingForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" required />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" required />
+
+      <label for="room">Room Type:</label>
+      <select id="room" required>
+        <option value="">Select a room</option>
+        <option value="Conference Room">Conference Room</option>
+        <option value="Training Room">Training Room</option>
+        <option value="Huddle Room">Huddle Room</option>
+      </select>
+
+      <label for="date">Date:</label>
+      <input type="date" id="date" required />
+
+      <label for="time">Time Slot:</label>
+      <select id="time" required>
+        <option value="">Select time</option>
+        <option value="10:00 AM - 11:00 AM">10:00 AM - 11:00 AM</option>
+        <option value="12:00 PM - 01:00 PM">12:00 PM - 01:00 PM</option>
+        <option value="02:00 PM - 03:00 PM">02:00 PM - 03:00 PM</option>
+      </select>
+
+      <button type="submit">Book Room</button>
+    </form>
+
+    <!-- Admin View Button -->
+    <a href="summary.html" class="admin-button">View Admin Bookings</a>
+  </div>
+
+  <!-- Popup -->
+  <div id="successPopup" class="popup">
+    <div class="popup-content">
+      <h2>🎉 Booking Confirmed!</h2>
+      <p>We've sent a confirmation email to your inbox.</p>
+      <button onclick="closePopup()">Close</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

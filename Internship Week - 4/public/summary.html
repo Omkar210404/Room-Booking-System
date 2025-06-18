@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin - Booking Summary</title>
+  <link rel="stylesheet" href="summary.css" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('./images/room.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      background-color: rgba(255, 255, 255, 0.95);
+      max-width: 900px;
+      margin: 80px auto;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: #222;
+    }
+
+    #summaryTable {
+      width: 100%;
+      margin-top: 20px;
+      border-collapse: collapse;
+    }
+
+    #summaryTable th,
+    #summaryTable td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: center;
+      background-color: #fff;
+    }
+
+    #summaryTable th {
+  background-color: #f0f0f0;
+  font-weight: bold;
+  color: #000; /* This makes the text visible (black) */
+    }
+
+
+    .hidden {
+      display: none;
+    }
+
+    .centered {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    #passwordPrompt input {
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #aaa;
+      border-radius: 4px;
+    }
+
+    #passwordPrompt button {
+      padding: 10px 16px;
+      font-size: 16px;
+      margin-left: 10px;
+      border: none;
+      background-color: #333;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    #passwordPrompt button:hover {
+      background-color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div id="passwordPrompt" class="centered">
+      <h2>Admin Access Required</h2>
+      <input type="password" id="adminPassword" placeholder="Enter Admin Password" />
+      <button onclick="verifyPassword()">Submit</button>
+    </div>
+
+    <div id="summarySection" class="hidden">
+      <h1>Booking Summary</h1>
+      <table id="summaryTable">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Room</th>
+            <th>Date</th>
+            <th>Time</th>
+          </tr>
+        </thead>
+        <tbody id="bookingData"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    const correctPassword = "sispladmin"; // Change if needed
+
+    function verifyPassword() {
+      const input = document.getElementById("adminPassword").value;
+      if (input === correctPassword) {
+        document.getElementById("passwordPrompt").classList.add("hidden");
+        document.getElementById("summarySection").classList.remove("hidden");
+        loadBookings();
+      } else {
+        alert("Incorrect password. Access denied.");
+      }
+    }
+
+    function loadBookings() {
+      fetch("/api/bookings")
+        .then(res => res.json())
+        .then(data => {
+          const tbody = document.getElementById("bookingData");
+          tbody.innerHTML = ''; // Clear any previous rows
+          data.forEach(booking => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+              <td>${booking.name}</td>
+              <td>${booking.email}</td>
+              <td>${booking.room}</td>
+              <td>${booking.date}</td>
+              <td>${booking.time}</td>
+            `;
+            tbody.appendChild(row);
+          });
+        })
+        .catch(err => {
+          console.error("Failed to load bookings:", err);
+        });
+    }
+  </script>
+</body>
+</html>
